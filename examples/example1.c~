@@ -1,0 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   example1.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rbernand <rbernand@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/03/17 19:16:03 by rbernand          #+#    #+#             */
+/*   Updated: 2016/03/17 19:56:57 by rbernand         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include "libopt.h"
+
+int			main(int ac, char **av)
+{
+	int			verbose;
+	int			x;
+	float		y;
+	char		*file;
+	int			counter;
+
+	store_opt('v', _OPT_BOOL, &verbose);
+	store_opt('c', _OPT_COUNT, &counter);
+	store_opt('x', _OPT_INT, &x);
+	store_opt('f', _OPT_STR, &file);
+	store_opt('y', _OPT_FLOAT, &y);
+	if (parse_opt(ac, av) == 0)
+	printf( "verbose  %d\n"\
+			"x        %d\n"\
+			"y        %f\n"\
+			"file     %s\n"\
+			"counter  %d\n", verbose, x, y, file, counter);
+
+
+	int i =0;
+	while (i <ac)
+	{
+		printf("%p %s\n", av[i], av[i]);
+		i++;
+	}
+	return (0);
+}
